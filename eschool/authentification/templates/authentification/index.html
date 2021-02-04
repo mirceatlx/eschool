@@ -1,0 +1,12 @@
+{% extends "authentification/layout.html" %}
+
+{% block body %}
+    <div class = "auth_b">
+
+    <button><a href = "{%url 'student'%}">Student</a></button>
+    <button><a href = "{%url 'teacher'%}">Teacher</a></button>
+    <button><a href = "{%url 'parent'%}">Parent</a></button>
+
+    </div>
+    
+{% endblock %}
