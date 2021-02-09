@@ -1,0 +1,53 @@
+STUDENT -- entity
+ -- student_id (primary key)
+ -- first_name (mandatory)
+ -- second_name (optional)
+ -- last_name (mandatory)
+ -- user (mandatory)
+ -- password (mandatory)
+ -- email (mandatory)
+ -- details (optional)
+
+STAFF -- entity
+ -- staff_id (primary key)
+ -- first_name (mandatory)
+ -- second_name (optional)
+ -- last_name (mandatory)
+ -- user (mandatory)
+ -- password (mandatory)
+ -- email (mandatory)
+ -- details (optional)
+
+CLASS -- entity (also solves M:M STUDENT <-> STAFF)
+ -- class_id (primary key)
+ -- staff_id (foreign key <- STAFF)
+ -- student_id (foreign key <- STUDENT)
+ -- details (optional)
+
+ASSESSMENT -- entity
+ -- assessment_id (primary key)
+ -- student_id (foreign key <- STUDENT)
+ -- end_date (mandatory)
+ -- documents (optional)
+ -- details (optional)
+
+STATS -- entity
+ -- stats_id (primary key)
+ -- student_id (foreign key)
+ -- grades (mandatory)
+ -- absences (mandatory)
+
+COMMENT -- entity
+ -- comments_id (primary key)
+ -- description (mandatory)
+
+ASSESSMENT_COMMENT -- (solves M:M ASSESSMENT <-> COMMENT)
+ -- comments_id (foreign key)
+ -- assessment_id (foreign key)
+
+PARENT -- entity
+ -- parent_id (primary key)
+ -- student_id (foreign key)
+ -- user (mandatory)
+ -- password (mandatory)
+ -- email (mandatory)

@@ -6,10 +6,10 @@ def index(request):
     return render(request, 'authentification/index.html')
 
 def student(request):
-    pass
+    return render(request, 'authentification/student.html')
 
 def teacher(request):
-    pass
+    return render(request, 'authentification/teacher.html')
 
 def parent(request):
-    pass
+    return render(request, 'authentification/parent.html')
