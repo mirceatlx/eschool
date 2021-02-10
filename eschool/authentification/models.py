@@ -7,7 +7,7 @@ class Parent(models.Model):
     last = models.CharField(max_length = 64)
     user = models.CharField(max_length = 64)
     password = models.CharField(max_length = 64)
-    email = models.EmailField()
+    email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Student(models.Model):
     last = models.CharField(max_length = 64)
     user = models.CharField(max_length = 64)
     password = models.CharField(max_length = 64)
-    email = models.EmailField()
+    email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
     parents = models.ManyToManyField(Parent, blank = True, related_name = 'parents')
 
@@ -30,7 +30,7 @@ class Teacher(models.Model):
     last = models.CharField(max_length = 64)
     user = models.CharField(max_length = 64)
     password = models.CharField(max_length = 64)
-    email = models.EmailField()
+    email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
 
     def __str__(self):
@@ -52,22 +52,24 @@ class Subject(models.Model):
         return f"{self.subject_name} in {self.xclass}"
 
 class Document(models.Model):
-    subject_id = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'subjects')
-    doc = models.FileField(upload_to = '')
+    subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'subjects')
+    doc = models.FileField(upload_to = 'eschool')
     date = models.DateField()
 
 class Assignment(models.Model):
-    class_id = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'classes')
+    classn = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'classes')
     date = models.DateTimeField()
     details = models.CharField(max_length = 200)
-    doc = models.FileField(blank = True)
+    doc = models.FileField(blank = True, upload_to = 'eschool')
 
 class Grade(models.Model):
-    student = models.OneToOneField(Student, on_delete = models.CASCADE, primary_key = True)
+    student = models.ForeignKey(Student, on_delete = models.CASCADE, related_name = 'grades')
+    subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'grades')
     grade = models.IntegerField()
     date = models.DateTimeField()
 
 class Absence(models.Model):
-    student = models.OneToOneField(Student, on_delete = models.CASCADE, primary_key = True)
+    student = models.ForeignKey(Student, on_delete = models.CASCADE, related_name = 'absences')
+    subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'absences')
     date = models.DateTimeField()
     
