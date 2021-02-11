@@ -1,1 +1,16 @@
 {% extends "authentification/layout.html" %}
+
+{% block body %}
+
+<div class = "heading">
+    <h1>Eschool - Teacher</h1>
+</div>
+
+<form action = '' method = "post">
+    {% csrf_token %}
+    {{ form }}
+    <input type = "submit" value = "Submit">
+</form>
+
+
+{% endblock %}

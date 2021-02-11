@@ -1,1 +1,20 @@
 {% extends "authentification/layout.html" %}
+
+{% block body %}
+
+<div class = "heading">
+    <h1>Eschool - Parent</h1>
+</div>
+
+<form action = '' method = "post">
+    {% csrf_token %}
+    {{ form }}
+    <input type = "submit" value = "Submit">
+</form>
+
+<div class = "sign">
+    <h3>Don't have an account?:(</h3>
+    <button><a href= "{%url 'parent_signup'%}" >Sign Up</a></button>
+</div>
+
+{% endblock %}

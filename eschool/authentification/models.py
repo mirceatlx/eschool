@@ -1,17 +1,7 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
-
-class Parent(models.Model):
-    first = models.CharField(max_length = 64)
-    last = models.CharField(max_length = 64)
-    user = models.CharField(max_length = 64)
-    password = models.CharField(max_length = 64)
-    email = models.EmailField(primary_key = True)
-    details = models.CharField(max_length = 200, blank = True)
-
-    def __str__(self):
-        return f"{self.first} {self.last} {self.email}"
 
 class Student(models.Model):
     first = models.CharField(max_length = 64)
@@ -20,7 +10,19 @@ class Student(models.Model):
     password = models.CharField(max_length = 64)
     email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
-    parents = models.ManyToManyField(Parent, blank = True, related_name = 'parents')
+    
+
+    def __str__(self):
+        return f"{self.first} {self.last} {self.email}"
+
+class Parent(models.Model):
+    first = models.CharField(max_length = 64)
+    last = models.CharField(max_length = 64)
+    user = models.CharField(max_length = 64)
+    password = models.CharField(max_length = 64)
+    email = models.EmailField(primary_key = True)
+    details = models.CharField(max_length = 200, blank = True)
+    students = models.ManyToManyField(Student, blank = True, related_name = 'parents')
 
     def __str__(self):
         return f"{self.first} {self.last} {self.email}"
@@ -73,3 +75,27 @@ class Absence(models.Model):
     subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'absences')
     date = models.DateTimeField()
     
+class StudentFormUp(ModelForm):
+    class Meta:
+        model = Student
+        fields = ['first', 'last', 'user', 'password', 'email', 'details']
+
+class ParentFormUp(ModelForm):
+    class Meta:
+        model = Parent
+        fields = ['first', 'last', 'user', 'password', 'email', 'details', 'students']
+
+class StudentLog(ModelForm):
+    class Meta:
+        model = Student
+        fields = ['email', 'password']
+
+class ParentLog(ModelForm):
+    class Meta:
+        model = Parent
+        fields = ['email', 'password']
+
+class TeacherFormLog(ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['email', 'password']

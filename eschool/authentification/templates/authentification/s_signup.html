@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class = "heading">
-    <h1>Eschool - Student</h1>
+    <h1>Eschool - Student Sign-Up</h1>
 </div>
 
 <form action = '' method = "post">
@@ -11,10 +11,5 @@
     {{ form }}
     <input type = "submit" value = "Submit">
 </form>
-
-<div class = "sign">
-    <h3>Don't have an account?:(</h3>
-    <button><a href= "{%url 'student_signup'%}" >Sign Up</a></button>
-</div>
 
 {% endblock %}
