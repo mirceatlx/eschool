@@ -1,7 +1,28 @@
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, forms
+from django import forms 
 
 # Create your models here.
+
+class Teacher(models.Model):
+    first = models.CharField(max_length = 64)
+    last = models.CharField(max_length = 64)
+    user = models.CharField(max_length = 64)
+    password = models.CharField(max_length = 64)
+    email = models.EmailField(primary_key = True)
+    details = models.CharField(max_length = 200, blank = True)
+
+    def __str__(self):
+        return f"{self.first} {self.last} {self.email}"
+
+
+class Class(models.Model):
+    #students = models.ManyToManyField(Student, blank = True, related_name = 'classes')
+    teachers = models.ManyToManyField(Teacher, blank = True, related_name = 'classes')
+    class_name = models.CharField(max_length = 3)
+
+    def __str__(self):
+        return f"{self.class_name}"
 
 class Student(models.Model):
     first = models.CharField(max_length = 64)
@@ -10,6 +31,7 @@ class Student(models.Model):
     password = models.CharField(max_length = 64)
     email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
+    xclass = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'students')
     
 
     def __str__(self):
@@ -26,25 +48,6 @@ class Parent(models.Model):
 
     def __str__(self):
         return f"{self.first} {self.last} {self.email}"
-
-class Teacher(models.Model):
-    first = models.CharField(max_length = 64)
-    last = models.CharField(max_length = 64)
-    user = models.CharField(max_length = 64)
-    password = models.CharField(max_length = 64)
-    email = models.EmailField(primary_key = True)
-    details = models.CharField(max_length = 200, blank = True)
-
-    def __str__(self):
-        return f"{self.first} {self.last} {self.email}"
-
-class Class(models.Model):
-    students = models.ManyToManyField(Student, blank = True, related_name = 'students')
-    teachers = models.ManyToManyField(Teacher, blank = True, related_name = 'teachers')
-    class_name = models.CharField(max_length = 3)
-
-    def __str__(self):
-        return f"{self.class_name}"
 
 class Subject(models.Model):
     subject_name = models.CharField(max_length = 64)
@@ -78,7 +81,7 @@ class Absence(models.Model):
 class StudentFormUp(ModelForm):
     class Meta:
         model = Student
-        fields = ['first', 'last', 'user', 'password', 'email', 'details']
+        fields = '__all__'
 
 class ParentFormUp(ModelForm):
     class Meta:

@@ -1,0 +1,21 @@
+{% extends "dashboard/layout.html" %}
+
+{% block body %}
+
+<h1>Welcome {{student.first}}</h1>
+<div class = 'layout_student'>
+
+    <div class = 'subjects'>
+        {% with xss=student.xclass %}
+        {% for c in xss.xclass.all %}
+        <li>
+            <p>{{c.subject_name}}</p>
+        </li>
+        {% endfor %}
+        {% endwith %}
+    </div>
+
+</div>
+<div class = 'test'> Yesss</div>
+
+{% endblock %}
