@@ -4,7 +4,38 @@
     <head>
         <title>ESchool</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'dashboard/styles.css' %}">
+        <style>
+            .subjects {
+                
+                padding-left: 30px;
+                font-size: 25px;
+            }
+            .updates {
+                
+                padding-left: 10px;
+                margin-left: 500px;
+                font-size: 25px;
+            }
+            .contact {
+                
+                margin-left: 200px;
+                font-size: 25px;
+                padding-left: 50px;
+            }
+            .subjects, .updates, .contact {
+                display: inline-block;
+            }
+            .grades {
+                font-size: 25px;
+            }
+            .absences {
+                font-size: 25px;
+            }
+            .pid {
+                font-style: italic;
+                color: blue;
+            }
+        </style>
     </head>
     <body>
         {% block body %}

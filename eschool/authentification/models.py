@@ -51,18 +51,18 @@ class Parent(models.Model):
 
 class Subject(models.Model):
     subject_name = models.CharField(max_length = 64)
-    xclass = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'xclass')
+    xclass = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'subjects')
 
     def __str__(self):
         return f"{self.subject_name} in {self.xclass}"
 
 class Document(models.Model):
-    subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'subjects')
+    subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'documents')
     doc = models.FileField(upload_to = 'eschool')
     date = models.DateField()
 
 class Assignment(models.Model):
-    classn = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'classes')
+    classn = models.ForeignKey(Class, on_delete = models.CASCADE, related_name = 'assignments')
     date = models.DateTimeField()
     details = models.CharField(max_length = 200)
     doc = models.FileField(blank = True, upload_to = 'eschool')

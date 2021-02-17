@@ -15,4 +15,5 @@ def teacher(request, email):
     return HttpResponse("Hello World!")
 
 def parent(request, email):
-    return HttpResponse("qq")
+    parent = Parent.objects.get(email = email)
+    return render(request, 'dashboard/parent.html', {'parent' : parent})

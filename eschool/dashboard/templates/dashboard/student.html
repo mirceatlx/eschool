@@ -1,21 +1,71 @@
 {% extends "dashboard/layout.html" %}
 
+{% load static %}
 {% block body %}
+
+
 
 <h1>Welcome {{student.first}}</h1>
 <div class = 'layout_student'>
 
     <div class = 'subjects'>
+        <p class = 'pid'>Subjects</p>
         {% with xss=student.xclass %}
-        {% for c in xss.xclass.all %}
+        {% for c in xss.subjects.all %}
         <li>
             <p>{{c.subject_name}}</p>
         </li>
         {% endfor %}
         {% endwith %}
     </div>
+    <div class = 'updates'>
+        <p class = 'pid'>Updates</p>
+        {% with xss=student.xclass %}
+        {% for ass in xss.assignments.all %}
+        <li>
+            <p>{{ass.details}}</p>
+        </li>
+        {% endfor %}
+        {% endwith %}
+    </div>
+    <div class = 'contact'>
+        <p class = 'pid'>Contact</p>
+        {% with xss=student.xclass %}
+        {% for tech in xss.teachers.all %}
+        <li>
+            <p>{{tech}}</p>
+        </li>
+        {% endfor %}
+        {% endwith %}
+    </div>
 
 </div>
-<div class = 'test'> Yesss</div>
+
+<div class = 'part2'>
+    <div class = 'grades'>
+        <p>Grades</p>
+        {% for grade in student.grades.all %}
+        <li>
+            <p>
+                {{grade.grade}}
+                in 
+                {{grade.subject}}
+            </p>
+        </li>
+        {% endfor %}
+    </div>
+    <div class = 'absences'>
+        <p>Absences</p>
+        {% for absence in student.absences.all %}
+        <li>
+            <p>
+                {{absence.date}}
+                in 
+                {{absence.subject}}
+            </p>
+        </li>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
