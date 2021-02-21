@@ -58,7 +58,8 @@ class Subject(models.Model):
 
 class Document(models.Model):
     subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'documents')
-    doc = models.FileField(upload_to = 'eschool')
+    doc = models.FileField(upload_to = 'eschool', blank = True)
+    task = models.CharField(max_length = 200, default = 'task')
     date = models.DateField()
 
 class Assignment(models.Model):
@@ -77,6 +78,7 @@ class Absence(models.Model):
     student = models.ForeignKey(Student, on_delete = models.CASCADE, related_name = 'absences')
     subject = models.ForeignKey(Subject, on_delete = models.CASCADE, related_name = 'absences')
     date = models.DateTimeField()
+    motivated = models.BooleanField(blank = True, default = False)
     
 class StudentFormUp(ModelForm):
     class Meta:

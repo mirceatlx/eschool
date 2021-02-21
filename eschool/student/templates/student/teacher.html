@@ -1,0 +1,16 @@
+{% extends "student/layout.html" %}
+
+{% load static %}
+{% block body %}
+
+<h1>{{teacher.first}} {{teacher.last}}</h1>
+
+<div>
+    <p>Contact</p>
+    <a href = "https://gmail.com">{{teacher.email}}</a>
+
+    <p>Details</p>
+    <p>{{teacher.details}}</p>
+</div>
+
+{% endblock %}

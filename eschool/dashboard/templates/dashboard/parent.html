@@ -3,19 +3,71 @@
 
 {% block body %}
 
-<h1>Welcome {{student.first}}</h1>
-<div class = 'layout_parent'>
-    <div class = 'subjects_p'>
-        {% with stud=parent.students.get(id = 1) %}
-        {% with xss=stud.xclass %}
+<h1 class="ttl">Welcome to the dashboard, {{parent.user}}!</h1>
+<div class='monospaced layout_student'>
+
+    <div class='subjects_p'>
+        <p class='pid'>Subjects</p>
+        {% with xss=student.xclass %}
         {% for c in xss.subjects.all %}
-        <li>
-            <p>{{c.subject_name}}</p>
-        </li>
+        <ul.>
+            <li>{{c.subject_name}}</li>
+        </ul.>
         {% endfor %}
         {% endwith %}
-        {% endwith %}
+    </div>
+    <div class='absences_p'>
+        <p>Total number of absences : {{student.absences.count}}</p>
+        <p class='pid'>Absences</p>
+        {% for absence in student.absences.all %}
+        <ul">
+            <li>
+
+                {{absence.date}}
+                in
+                {{absence.subject}}
+
+            </li>
+        </ul">
+        {% endfor %}
+    </div>
+    <div class = "averages">
+        <h3>Averages</h3>
+        {% for grade, subject in avgs %}
+        <ul>
+            <li>{{subject}} : {{grade}}</li>
+        </ul>
+        {% endfor %}
     </div>
 </div>
 
-{% endblock %}
+<div class='monospaced part2'>
+    <div class='grades_p'>
+        <p class='pid'>Grades</p>
+        {% for grade in student.grades.all %}
+        <ul">
+            <li>
+                {{grade.grade}}
+                at
+                {{grade.subject}}
+                on
+                {{grade.date}}
+                </li">
+        </ul">
+        {% endfor %}
+    </div>
+    
+</div>
+<div class='monospaced part3'>
+    <div class='contact_p'>
+        <p class='pid'>Contact</p>
+        {% with xss=student.xclass %}
+        {% for tech in xss.teachers.all %}
+        <ul">
+            <li><a href = "{% url 'student:teacher' email=tech.email %}">{{tech.first}} {{tech.last}} </a></li>
+        </ul">
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}k %}
