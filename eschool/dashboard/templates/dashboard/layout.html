@@ -1,44 +1,104 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <title>ESchool</title>
-        {% load static %}
-        <style>
-            .subjects {
-                
-                padding-left: 30px;
-                font-size: 25px;
-            }
-            .updates {
-                
-                padding-left: 10px;
-                margin-left: 500px;
-                font-size: 25px;
-            }
-            .contact {
-                
-                margin-left: 200px;
-                font-size: 25px;
-                padding-left: 50px;
-            }
-            .subjects, .updates, .contact {
-                display: inline-block;
-            }
-            .grades {
-                font-size: 25px;
-            }
-            .absences {
-                font-size: 25px;
-            }
-            .pid {
-                font-style: italic;
-                color: blue;
-            }
-        </style>
-    </head>
-    <body>
-        {% block body %}
-        {% endblock %}
-    </body>
+<head>
+    <title>ESchool</title>
+    {% load static %}
+    <style>
+
+
+        .center {
+            text-align: center;
+            border: 3px solid green;
+        }
+
+        .ttl {
+            color: blue;
+            font-size:30px;
+        }
+
+        .subjects {
+            margin-left: 50px;           
+            font-size: 25px;
+        }
+
+        .classes{
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .schedule{
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .subjects_p {
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .updates {            
+            margin-left: 650px;
+            font-size: 25px;
+        }
+
+        .contact_p {
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .contact {
+            margin-left: 50px;
+            font-size: 25px;
+            
+        }
+
+        .subjects, .updates, .contact {
+            
+            display:inline-block;
+            vertical-align:top;
+        }
+
+        .subjects_p, absences_p, contact_p{
+            width:33%;
+            display:inline-block;
+            vertical-align:top;
+        }
+
+        .grades_p {
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .grades {
+            
+            margin-left: 50px;           
+            font-size: 25px;
+        }
+
+        .absences {
+            
+            margin-left: 50px;
+            font-size: 25px;
+        }
+
+        .absences_p {
+            float:right;
+            margin-left: 50px;
+            margin-right: 400px;
+            font-size: 25px;
+        }
+
+
+        .pid {
+            font-size: 28px;
+            font-style: italic;
+            color: #4141D8;
+        }
+    </style>
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
 </html>

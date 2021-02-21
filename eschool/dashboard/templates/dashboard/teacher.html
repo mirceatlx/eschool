@@ -3,17 +3,24 @@
 {% load static %}
 {% block body %}
 
-<h1>Welcome {{teacher.user}}</h1>
+<h1 class="ttl">Welcome to the dashboard, {{teacher.user}}!</h1>
 
-<div class = 'layout_teacher'>
-    <div class = 'classes'>
+<div class='layout_teacher'>
+    <div class='subjects_p'>
+        <p class="pid">Classes</p>
         {% with classes=teacher.classes.all %}
         {% for cl in classes %}
-        <li>
+        <ul.>
             <p>{{cl.class_name}}</p>
-        </li>
+        </ul.>
         {% endfor %}
         {% endwith %}
+    </div>
+    <div class='absences_p'>
+        <p class="pid">Messages</p>
+        <p >
+             Nothing here yet!
+        </p>
     </div>
 </div>
 

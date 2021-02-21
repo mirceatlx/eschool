@@ -3,52 +3,62 @@
 
 {% block body %}
 
-<h1>Welcome {{parent.user}}</h1>
-<div class = 'layout_parent'>
-    <div class = 'subjects_p'>
+<h1 class="ttl">Welcome to the dashboard, {{parent.user}}!</h1>
+<div class='monospaced layout_student'>
+
+    <div class='subjects_p'>
+        <p class='pid'>Subjects</p>
         {% with xss=student.xclass %}
         {% for c in xss.subjects.all %}
-        <li>
-            <p>{{c.subject_name}}</p>
-        </li>
+        <ul.>
+            <li>{{c.subject_name}}</li>
+        </ul.>
         {% endfor %}
         {% endwith %}
     </div>
-    <div class = 'grades_p'>
-        <p>Grades</p>
-        {% for grade in student.grades.all %}
-        <li>
-            <p>
-                {{grade.grade}}
-                in 
-                {{grade.subject}}
-            </p>
-        </li>
-        {% endfor %}
-    </div>
-    <div class = 'absences_p'>
-        <p>Absences</p>
+    <div class='absences_p'>
+        <p class='pid'>Absences</p>
         {% for absence in student.absences.all %}
-        <li>
-            <p>
+        <ul">
+            <li>
+
                 {{absence.date}}
-                in 
+                in
                 {{absence.subject}}
-            </p>
-        </li>
+
+            </li>
+        </ul">
         {% endfor %}
     </div>
-    <div class = 'contact_p'>
-        <p class = 'pid'>Contact</p>
-        {% with xss=student.xclass %}
-        {% for tech in xss.teachers.all %}
-        <li>
-            <p>{{tech}}</p>
-        </li>
+</div>
+
+<div class='monospaced part2'>
+    <div class='grades_p'>
+        <p class='pid'>Grades</p>
+        {% for grade in student.grades.all %}
+        <ul">
+            <li>
+                {{grade.grade}}
+                at
+                {{grade.subject}}
+                on
+                {{grade.date}}
+                </li">
+        </ul">
         {% endfor %}
-        {% endwith %}
     </div>
     
 </div>
-
-{% endblock %}
+<div class='monospaced part3'>
+    <div class='contact_p'>
+        <p class='pid'>Contact</p>
+        {% with xss=student.xclass %}
+        {% for tech in xss.teachers.all %}
+        <ul">
+            <li>{{tech}}</li>
+        </ul">
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}k %}
