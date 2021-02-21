@@ -19,3 +19,6 @@ def parent(request, email):
     parent = Parent.objects.get(email = email)
     student = parent.students.get()
     return render(request, 'dashboard/parent.html', {'parent' : parent, 'student' : student})
+
+
+# i like pizza
