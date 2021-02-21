@@ -18,7 +18,18 @@ def teacher(request, email):
 def parent(request, email):
     parent = Parent.objects.get(email = email)
     student = parent.students.get()
-    return render(request, 'dashboard/parent.html', {'parent' : parent, 'student' : student})
+    x = student.xclass
+    avgs = []
+    for sub in x.subjects.all():
+        gr = Grade.objects.filter(student = student, subject = sub)
+        avg = 0
+        for g in gr:
+            avg = avg + g.grade
+        if gr.count() != 0:
+            #print(gr.count)
+            avg = avg / gr.count()
+            avgs.append((avg,sub.subject_name))
+
+    return render(request, 'dashboard/parent.html', {'parent' : parent, 'student' : student, 'avgs' : avgs})
 
 
-# i like pizza

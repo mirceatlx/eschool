@@ -10,7 +10,7 @@
         {% with xss=student.xclass %}
         {% for c in xss.subjects.all %}
         <ul.>
-            <li>{{c.subject_name}}</li>
+            <li><a href = "{% url 'student:subject' name=c.subject_name email=student.email %}">{{c.subject_name}}</a></li>
         </ul.>
         {% endfor %}
         {% endwith %}
@@ -20,7 +20,7 @@
         {% with xss=student.xclass %}
         {% for ass in xss.assignments.all %}
         <ul.>
-            <p>{{ass.details}}</p>
+            <p>{{ass.details}}  / created on {{ass.date}}</p>
         </ul.>
         {% endfor %}
         {% endwith %}
@@ -61,11 +61,11 @@
 </div>
 <div class='part3'>
     <div class='contact'>
-        <p class='pid'>Contact</p>
+        <p class='pid'>Teachers</p>
         {% with xss=student.xclass %}
         {% for tech in xss.teachers.all %}
         <ul">
-            <li>{{tech}}</li>
+            <li><a href = "{% url 'student:teacher' email=tech.email %}">{{tech.first}} {{tech.last}} </a></li>
         </ul">
         {% endfor %}
         {% endwith %}

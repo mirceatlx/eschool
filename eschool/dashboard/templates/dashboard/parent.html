@@ -17,6 +17,7 @@
         {% endwith %}
     </div>
     <div class='absences_p'>
+        <p>Total number of absences : {{student.absences.count}}</p>
         <p class='pid'>Absences</p>
         {% for absence in student.absences.all %}
         <ul">
@@ -28,6 +29,14 @@
 
             </li>
         </ul">
+        {% endfor %}
+    </div>
+    <div class = "averages">
+        <h3>Averages</h3>
+        {% for grade, subject in avgs %}
+        <ul>
+            <li>{{subject}} : {{grade}}</li>
+        </ul>
         {% endfor %}
     </div>
 </div>
@@ -55,7 +64,7 @@
         {% with xss=student.xclass %}
         {% for tech in xss.teachers.all %}
         <ul">
-            <li>{{tech}}</li>
+            <li><a href = "{% url 'student:teacher' email=tech.email %}">{{tech.first}} {{tech.last}} </a></li>
         </ul">
         {% endfor %}
         {% endwith %}
