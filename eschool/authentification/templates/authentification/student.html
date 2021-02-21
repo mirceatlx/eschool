@@ -2,18 +2,20 @@
 
 {% block body %}
 
-<div class = "heading">
-    <h1>Eschool - Student</h1>
+<div class = "swelcome">
+    <h1>STUDENT</h1>
 </div>
 
 <form action = '' method = "post">
     {% csrf_token %}
-    {{ form }}
+    <p class = "mails">Enter email adress and password</p>
+    {{ form.email }}
+    {{ form.password }}
     <input type = "submit" value = "Submit">
 </form>
 
 <div class = "sign">
-    <h3>Don't have an account?:(</h3>
+    <h3>Don't have an account?</h3>
     <button><a href= "{%url 'student_signup'%}" >Sign Up</a></button>
 </div>
 
