@@ -11,7 +11,7 @@
         {% with classes=teacher.classes.all %}
         {% for cl in classes %}
         <ul.>
-            <p>{{cl.class_name}}</p>
+            <p><a href = "{% url 'teacher:xcl' name=cl.class_name %}">{{cl.class_name}}</a></p>
         </ul.>
         {% endfor %}
         {% endwith %}
