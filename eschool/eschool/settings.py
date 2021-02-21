@@ -30,7 +30,7 @@ SECRET_KEY = '(oz7^6!7*8@em(2as25rkwbxhqt*0(u2g2qzogl-m5g6y#vg_f'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.0.109'
+    '192.168.1.6'
 ]
 
 
@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'dashboard',
     'student',
+    'teacher',
     'authentification',
     'django.contrib.admin',
     'django.contrib.auth',
