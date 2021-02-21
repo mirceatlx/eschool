@@ -1,0 +1,64 @@
+{% extends "dashboard/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<h1 class="ttl">Welcome to the dashboard, {{parent.user}}!</h1>
+<div class='monospaced layout_student'>
+
+    <div class='subjects_p'>
+        <p class='pid'>Subjects</p>
+        {% with xss=student.xclass %}
+        {% for c in xss.subjects.all %}
+        <ul.>
+            <li>{{c.subject_name}}</li>
+        </ul.>
+        {% endfor %}
+        {% endwith %}
+    </div>
+    <div class='absences_p'>
+        <p class='pid'>Absences</p>
+        {% for absence in student.absences.all %}
+        <ul">
+            <li>
+
+                {{absence.date}}
+                in
+                {{absence.subject}}
+
+            </li>
+        </ul">
+        {% endfor %}
+    </div>
+</div>
+
+<div class='monospaced part2'>
+    <div class='grades_p'>
+        <p class='pid'>Grades</p>
+        {% for grade in student.grades.all %}
+        <ul">
+            <li>
+                {{grade.grade}}
+                at
+                {{grade.subject}}
+                on
+                {{grade.date}}
+                </li">
+        </ul">
+        {% endfor %}
+    </div>
+    
+</div>
+<div class='monospaced part3'>
+    <div class='contact_p'>
+        <p class='pid'>Contact</p>
+        {% with xss=student.xclass %}
+        {% for tech in xss.teachers.all %}
+        <ul">
+            <li>{{tech}}</li>
+        </ul">
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}k %}

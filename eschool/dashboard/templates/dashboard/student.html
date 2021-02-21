@@ -1,0 +1,74 @@
+{% extends "dashboard/layout.html" %}
+
+{% load static %}
+{% block body %}
+<h1 class="ttl">Welcome to the dashboard, {{student.first}}!</h1>
+<div class='layout_student'>
+
+    <div class='subjects'>
+        <p class='pid'>Subjects</p>
+        {% with xss=student.xclass %}
+        {% for c in xss.subjects.all %}
+        <ul.>
+            <li>{{c.subject_name}}</li>
+        </ul.>
+        {% endfor %}
+        {% endwith %}
+    </div>
+    <div class='updates'>
+        <p class='pid'>Updates</p>
+        {% with xss=student.xclass %}
+        {% for ass in xss.assignments.all %}
+        <ul.>
+            <p>{{ass.details}}</p>
+        </ul.>
+        {% endfor %}
+        {% endwith %}
+    </div>
+
+
+</div>
+
+<div class='part2'>
+    <div class='grades'>
+        <p class='pid'>Grades</p>
+        {% for grade in student.grades.all %}
+        <ul">
+            <li>
+                {{grade.grade}}
+                at
+                {{grade.subject}}
+                on
+                {{grade.date}}
+                </li">
+        </ul">
+        {% endfor %}
+    </div>
+    <div class='absences'>
+        <p class='pid'>Absences</p>
+        {% for absence in student.absences.all %}
+        <ul">
+            <li>
+
+                {{absence.date}}
+                in
+                {{absence.subject}}
+
+            </li>
+        </ul">
+        {% endfor %}
+    </div>
+</div>
+<div class='part3'>
+    <div class='contact'>
+        <p class='pid'>Contact</p>
+        {% with xss=student.xclass %}
+        {% for tech in xss.teachers.all %}
+        <ul">
+            <li>{{tech}}</li>
+        </ul">
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+{% endblock %}

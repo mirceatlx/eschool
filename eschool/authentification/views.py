@@ -70,7 +70,10 @@ def student_signup(request):
     if request.method == 'POST':
         form = StudentFormUp(request.POST)
         if form.is_valid():
-            form.save() # in the database!!
+            instance = form.save(commit = False)
+            form.save()
+            xss = Class.objects.get(class_name = instance.xclass)
+            xss.students.add() # in the database!!
             return HttpResponseRedirect(reverse("student"))
         else:
             return HttpResponse("This user already exists!")
