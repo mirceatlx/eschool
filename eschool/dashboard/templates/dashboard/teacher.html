@@ -1,0 +1,20 @@
+{% extends "dashboard/layout.html" %}
+
+{% load static %}
+{% block body %}
+
+<h1>Welcome {{teacher.user}}</h1>
+
+<div class = 'layout_teacher'>
+    <div class = 'classes'>
+        {% with classes=teacher.classes.all %}
+        {% for cl in classes %}
+        <li>
+            <p>{{cl.class_name}}</p>
+        </li>
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+
+{% endblock %}
