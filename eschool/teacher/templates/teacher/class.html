@@ -3,4 +3,36 @@
 {% load static %}
 {% block body %}
 
+<h1>{{xcl.class_name}}</h1>
+
+<div>
+    <h3> Students </h3>
+    {% for s in xcl.students.all %}
+        <ul>
+            <li><a href = "{% url 'teacher:student' email=s.email subject=subject.subject_name c=xcl.class_name %}">{{s.first}} {{s.last}}</a></li>
+        </ul>
+    {% endfor %}
+</div>
+
+<div>
+    <h3> Assignments </h3>
+    {% for a in xcl.assignments.all %}
+        <ul>
+            <li>{{a.details}} created on {{a.date}}</li>
+        </ul>
+    {% endfor %}
+    <button><a href = "{% url 'teacher:assignment' x=xcl.class_name s=subject.subject_name %}">Add Assignment</a></button>
+</div>
+
+<div>
+    <h3> Assigned Tasks </h3>
+    {% for doc in subject.documents.all %}
+        <ul>
+            <li>{{doc.task}} due to {{doc.date}}</li>
+        </ul>
+    {% endfor %}
+    <button><a href = "{% url 'teacher:task' s=subject.subject_name x=xcl.class_name %}">Add Task</a></button>
+    
+</div>
+
 {% endblock %}

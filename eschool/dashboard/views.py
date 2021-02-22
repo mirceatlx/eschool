@@ -21,4 +21,3 @@ def parent(request, email):
     return render(request, 'dashboard/parent.html', {'parent' : parent, 'student' : student})
 
 
-# i like pizza NU!!!!!!!!!!!!!!!

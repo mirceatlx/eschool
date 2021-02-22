@@ -1,0 +1,44 @@
+{% extends "teacher/layout.html" %}
+
+{% load static %}
+{% block body %}
+
+<h1>{{student.first}} {{student.last}}</h1>
+
+<div>
+    <h3> Grades </h3>
+    {% for g in student.grades.all %}
+        <ul>
+            <li>{{g.grade}} on {{g.date}}</li>
+        </ul>
+    {% endfor %}
+
+    <h3>Current Average : {{avg}}</h3>
+
+    <h3>Add grade</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_grade }}
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+<div>
+    <h3>Absences</h3>
+    {% for a in student.absences.all %}
+        <ul>
+            <li>{{a.date}}</li>
+        </ul>
+    {% endfor %}
+
+    <h3>Total number of absences : {{student.absences.count}}</h3>
+    <h3>Add absence</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_absence }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

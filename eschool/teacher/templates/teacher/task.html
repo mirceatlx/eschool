@@ -1,0 +1,16 @@
+{% extends "teacher/layout.html" %}
+
+{% load static %}
+{% block body %}
+
+<h1>Add task</h1>
+
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

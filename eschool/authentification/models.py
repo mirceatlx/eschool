@@ -11,6 +11,7 @@ class Teacher(models.Model):
     password = models.CharField(max_length = 64)
     email = models.EmailField(primary_key = True)
     details = models.CharField(max_length = 200, blank = True)
+    subject = models.CharField(max_length = 64)
 
     def __str__(self):
         return f"{self.first} {self.last} {self.email}"
