@@ -3,30 +3,30 @@
 {% load static %}
 {% block body %}
 
-<h1>{{subject.subject_name}}</h1>
+<h1 class = "titlumat">{{subject.subject_name}}</h1>
 
 
 <div>
-    <h3>Grades</h3>
+    <h3 class = "note">Grades</h3>
     {% for grade in grades %}
     <ul>
-        <li>{{grade.grade}} on {{grade.date}}</li>
+        <li class = "noteletale">{{grade.grade}} on {{grade.date}}</li>
     </ul>
     {% endfor %}
 </div>
 
 <div>
-    <h3>Absences</h3>
+    <h3 class = "abse">Absences</h3>
     {% for absx in absences %}
     <ul>
-        <li>{{absx.date}}</li>
+        <li class = "abso">{{absx.date}}</li>
     </ul>
     {% endfor %}
     <p>Total number of absences : {{absences.count}}</p>
 </div>
 
 <div>
-    <h3>Tasks</h3>
+    <h3 class = "taskuri">Tasks</h3>
     {% for doc in subject.documents.all %}
     <ul>
         <li>{{doc.task}} due to {{doc.date}}</li>

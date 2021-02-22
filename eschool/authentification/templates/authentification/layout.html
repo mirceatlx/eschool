@@ -4,7 +4,82 @@
     <head>
         <title>ESchool</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'authentification/style.css' %}">
+        <style>
+            body {
+                background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,58,131,0.981127485173757) 100%, rgba(0,212,255,1) 100%);
+            }
+            .heading {font-size: 70px; color: yellow;
+            text-align: center;
+            font-style: italic;
+            }
+            .nona {
+                color: yellow;
+                font-size: 75px;
+                font-style: italic;
+                text-align: center;
+            }
+            .auth_b {
+                color: rgb(29, 22, 22);
+                font-size: larger;
+                height: 50%;
+                align-items: center;
+                text-align: center;
+            }
+            .top {
+                color: lightgreen;
+                font-size: large;
+            }
+            .linkbutton {
+                background-color: purple;
+                 color: white;
+                padding: 20px 35px;
+                text-align: center;
+                 text-decoration: none;
+                display: inline-block;
+                font-size: 40px;
+            }
+            .swelcome {
+                color: yellow;
+                font-size: 40px;
+                font-style: italic;
+                text-align: center;
+            }
+            .sign_aut{
+                color: yellow;
+            }
+            .mails {
+                color: beige;
+                font-size: 25px;
+                font-style: inherit;
+            }
+            .mailteach {
+                color: beige;
+                font-size: 25px;
+                font-style: inherit;
+            }
+            .sign {
+                color: beige;
+                font-size: 20px;
+                font-style: italic;
+                text-align: left;
+                font-style: inherit;
+            }
+            .sign_parent {
+                color: beige;
+                font-size: 20px;
+                font-style: italic;
+                text-align: left;
+                font-style: inherit;
+            }
+            .profu {
+                color: yellow;
+                font-size: 75px;
+                font-style: italic;
+                text-align: center;
+            }
+            
+        </style>
     </head>
     <body>
         {% block body %}
