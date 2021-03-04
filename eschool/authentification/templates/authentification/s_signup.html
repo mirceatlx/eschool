@@ -8,19 +8,19 @@
 
 <form action = '' method = "post">
     {% csrf_token %}
+    <p class = 'yes'>First Name</p>
     {{ form.first }}
-    <br>
-
+    <p class = 'yes'>Last Name</p>
     {{ form.last }}
-    <br>
+    <p class = 'yes'>Username</p>
     {{ form.user }}
-    <br>
+    <p class = 'yes'>Password</p>
     {{ form.password }}
-    <br>
+    <p class = 'yes'> Email</p>
     {{ form.email }} 
-    <p>email</p>
+    <p class = 'yes'> Details </p>
     {{ form.details }}
-    <br>
+    <p class = 'yes'> Class</p>
     {{ form.Xclass }}
     <input type = "submit" value = "Submit">
 </form>

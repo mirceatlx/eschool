@@ -3,12 +3,25 @@
 {% block body %}
 
 <div class = "heading">
-    <h1 id = "welcoming">Eschool - Student Sign-Up</h1>
+    <h1 id = "welcoming">Eschool - Parent Sign-Up</h1>
 </div>
 
 <form action = '' method = "post">
     {% csrf_token %}
-    {{ form }}
+    <p class = 'yes'>First Name</p>
+    {{ form.first }}
+    <p class = 'yes'>Last Name</p>
+    {{ form.last }}
+    <p class = 'yes'>Username</p>
+    {{ form.user }}
+    <p class = 'yes'>Password</p>
+    {{ form.password }}
+    <p class = 'yes'> Email</p>
+    {{ form.email }} 
+    <p class = 'yes'> Details </p>
+    {{ form.details }}
+    <p class = 'yes'> Student</p>
+    {{ form.students }}
     <input type = "submit" value = "Submit">
 </form>
 
